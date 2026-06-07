@@ -2,17 +2,15 @@ pipeline {
     agent any
 
     stages {
-
-        stage('Checkout') {
+        stage('Build') {
             steps {
-                checkout scm
+                sh 'javac HelloWorld.java'
             }
         }
 
-        stage('Build') {
+        stage('Run') {
             steps {
-                sh 'chmod +x gradlew'
-                sh './gradlew clean build'
+                sh 'java HelloWorld'
             }
         }
     }
